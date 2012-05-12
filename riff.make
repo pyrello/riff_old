@@ -4,31 +4,14 @@ core = 7.x
 api = 2
 projects[] = "drupal"
 ; Modules
-; Please fill the following out. Type may be one of get, cvs, git, bzr or svn,
-; and url is the url of the download.
-projects[riff][download][type] = ""
-projects[riff][download][url] = ""
-projects[riff][type] = "module"
-
 projects[] = "addressfield"
 projects[] = "admin"
 projects[] = "ctools"
 projects[] = "commerce"
 projects[] = "commerce_paypal"
+projects[] = "date"
 projects[] = "entity"
 projects[] = "rules"
 projects[] = "views"
 ; Themes
 projects[] = "omega"
-; Please fill the following out. Type may be one of get, cvs, git, bzr or svn,
-; and url is the url of the download.
-projects[fly][download][type] = ""
-projects[fly][download][url] = ""
-projects[fly][type] = "theme"
-
-; Please fill the following out. Type may be one of get, cvs, git, bzr or svn,
-; and url is the url of the download.
-projects[muse][download][type] = ""
-projects[muse][download][url] = ""
-projects[muse][type] = "theme"
-
