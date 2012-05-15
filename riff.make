@@ -12,6 +12,7 @@ projects[] = "ctools"
 projects[] = "date"
 projects[] = "entity"
 projects[] = "field_group"
+projects[] = "jplayer"
 projects[] = "pathauto"
 projects[] = "rules"
 projects[] = "sweaver"
@@ -28,3 +29,7 @@ projects[riff_music_content][download][url] = "git://github.com/webgeeks/riff_mu
 projects[] = "omega"
 
 ; Themes :: Custom
+projects[bumpin][download][type] = "git"
+projects[bumpin][download][url] = "git://github.com/webgeeks/bumpin.git"
+
+; Javascript Libraries
