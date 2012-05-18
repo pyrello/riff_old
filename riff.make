@@ -33,9 +33,14 @@ projects[riff_music_content][download][branch] = "7.x-1.x"
 projects[] = "omega"
 
 ; Themes :: Custom
-projects[bumpin][type] = "theme"
-projects[bumpin][download][type] = "git"
-projects[bumpin][download][url] = "git://github.com/webgeeks/bumpin.git"
-projects[bumpin][download][branch] = "7.x-1.x"
+projects[fly][type] = "theme"
+projects[fly][download][type] = "git"
+projects[fly][download][url] = "git://github.com/webgeeks/fly.git"
+projects[fly][download][branch] = "7.x-1.x"
+
+projects[muse][type] = "theme"
+projects[muse][download][type] = "git"
+projects[muse][download][url] = "git://github.com/webgeeks/muse.git"
+projects[muse][download][branch] = "7.x-1.x"
 
 ; Javascript Libraries

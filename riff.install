@@ -67,8 +67,8 @@ function riff_install() {
   filter_format_save($full_html_format);
 
   // Enable some standard blocks.
-  $default_theme = variable_get('theme_default', 'bartik');
-  $admin_theme = 'seven';
+  $default_theme = variable_get('theme_default', 'fly');
+  $admin_theme = 'riff';
   $values = array(
     array(
       'module' => 'system',
@@ -227,33 +227,6 @@ function riff_install() {
     node_add_body_field($type);
   }
 	
-	$riff_types = array(
-    array(
-      'type' => 'song',
-      'name' => st('Song'),
-      'base' => 'node_content',
-      'description' => st("Use a song to post your music."),
-      'custom' => 1,
-      'modified' => 1,
-      'locked' => 0,
-    ),
-    array(
-      'type' => 'album',
-      'name' => st('Album'),
-      'base' => 'node_content',
-      'description' => st("Use an album to collect songs together."),
-      'custom' => 1,
-      'modified' => 1,
-      'locked' => 0,
-    ),
-	);
-
-  foreach ($riff_types as $rtype) {
-    $rtype = node_type_set_defaults($rtype);
-    node_type_save($rtype);
-    //node_add_body_field($type);
-  }
-
   // Insert default pre-defined RDF mapping into the database.
   $rdf_mappings = array(
     array(
