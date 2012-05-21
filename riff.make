@@ -24,6 +24,7 @@ projects[riff_base][type] = "module"
 projects[riff_base][download][type] = "git"
 projects[riff_base][download][url] = "git://github.com/webgeeks/riff_base.git"
 projects[riff_base][download][branch] = "7.x-1.x"
+
 projects[riff_music_content][type] = "module"
 projects[riff_music_content][download][type] = "git"
 projects[riff_music_content][download][url] = "git://github.com/webgeeks/riff_music_content.git"
@@ -44,3 +45,6 @@ projects[muse][download][url] = "git://github.com/webgeeks/muse.git"
 projects[muse][download][branch] = "7.x-1.x"
 
 ; Javascript Libraries
+libraries[jplayer][download][type] = "get"
+libraries[jplayer][download][url] = "http://www.jplayer.org/latest/jQuery.jPlayer.2.1.0.zip"
+libraries[jplayer][directory_name] = "jplayer"
