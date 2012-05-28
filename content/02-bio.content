@@ -1,19 +1,25 @@
 <?php
-$node = array(
-  'type' => 'page',
-  'title' => 'Bio',
-  'body' => '',
-  'field_body' => array(
-    0 => array(
-      'value' => '<p>Edit this page and tell a story about how your band came to be. How did you meet? How did you start playing music together? Did one or all of you study music as children or just possess a burning desire to perform? Your fans are going to love your kickass story!</p>',
-      'format' => 2,
-    ),
-  ),
-  'uid' => 3,
-  'status' => 1,
-  'promote' => 1,
-  'sticky' => 1,
-  'comment' => 0,
-  'format' => 2,
-  'path' => 'about',
+$node = new stdClass();
+$node->type = 'page';
+$node->language = LANGUAGE_NONE;
+$node->title = 'Bio';
+$node->body[$node->language][0]['value'] = '<p>Edit this page and tell a story about how your band came to be. How did you meet? How did you start playing music together? Did one or all of you study music as children or just possess a burning desire to perform? Your fans are going to love your kickass story!</p>';
+$node->body[$node->language][0]['summary'] = '<p>Edit this page and tell a story about how your band came to be. How did you meet? How did you start playing music together? Did one or all of you study music as children or just possess a burning desire to perform? Your fans are going to love your kickass story!</p>';
+$node->body[$node->language][0]['format'] = 'full_html';
+$node->uid = 2;
+$node->status = 1;
+$node->promote = 0;
+$node->sticky = 0;
+$node->comment = 0;
+$node->format = 'full_html';
+$node->path = array(
+	'alias' => 'bio',
+	'language' => $node->language,
+);
+$node->link = array(
+	'menu_name' => 'main-menu',
+	'link_title' => $node->title,
+	'options' => array(
+		'attributes' => array('title' => $node->title),
+	),
 );
