@@ -450,7 +450,7 @@ function riff_install() {
 	$enable = array(
 		'theme_default' => 'fly',
 		'admin_theme' => 'rubik',
-		//'zen'
+		'muse',
 	);
 	theme_enable($enable);
 	 
@@ -459,9 +459,6 @@ function riff_install() {
 			variable_set($var, $theme);
 		}
 	}
-	
-	$additional = array('muse');
-	theme_enable($additional);
 	
   // Enable the admin theme.
   db_update('system')
@@ -477,9 +474,42 @@ function riff_install() {
 	// Disable the default Bartik theme
 	//theme_disable(array('bartik'));
 	
-	// Set some other variables
-	variable_set('sweaver_plugin_status_sweaver_plugin_customcss', '1');
-	variable_set('sweaver_plugin_status_sweaver_plugin_styles', '1');
-	variable_set('sweaver_plugin_status_sweaver_plugin_themesettings', '1');
-	variable_set('sweaver_plugin_status_sweaver_plugin_themeswitch', '1');
+	// Import starter content
+	riff_create_content('full_html', 'content', 'content', 3);
+	
+	// Set values for pathauto
+	if (module_exists('pathauto')) {
+		variable_set('pathauto_node_pattern', '[node:content-type]/[node:title]');
+	}
+	// set values for sweaver
+	if (module_exists('sweaver')) {
+		variable_set('sweaver_plugin_status_sweaver_plugin_customcss', '1');
+		variable_set('sweaver_plugin_status_sweaver_plugin_styles', '1');
+		variable_set('sweaver_plugin_status_sweaver_plugin_themesettings', '1');
+		variable_set('sweaver_plugin_status_sweaver_plugin_themeswitch', '1');
+	}
+}
+
+/**
+ * Function to import node files included with this install profile.
+ *
+ * Adapted from http://scotthadfield.ca/2010/06/17/creating-nodes-drupal-install-profiles
+ */
+function riff_create_content($format, $dir = 'content', $ext = 'content', $account = NULL) {  
+  $path = dirname(__FILE__);
+  $files = file_scan_directory($path . '/' . $dir, "\.${ext}$");
+  asort($files);
+
+  foreach ($files as $file) {
+    $node = array();
+    ob_start();
+    include $file->filename;
+    ob_end_clean();
+
+    $node = (object) $node;
+    $node->uid = $account ? $account->uid : 1;
+    $node->format = $format;
+    $node->field_body[0]['format'] = $format;
+    node_save($node);
+  }
 }

@@ -1,0 +1,19 @@
+<?php
+$node = array(
+  'type' => 'page',
+  'title' => 'Bio',
+  'body' => '',
+  'field_body' => array(
+    0 => array(
+      'value' => '<p>Edit this page and tell a story about how your band came to be. How did you meet? How did you start playing music together? Did one or all of you study music as children or just possess a burning desire to perform? Your fans are going to love your kickass story!</p>',
+      'format' => 2,
+    ),
+  ),
+  'uid' => 3,
+  'status' => 1,
+  'promote' => 1,
+  'sticky' => 1,
+  'comment' => 0,
+  'format' => 2,
+  'path' => 'about',
+);
