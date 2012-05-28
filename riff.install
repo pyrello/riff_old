@@ -80,7 +80,7 @@ function riff_install() {
       'pages' => '',
       'cache' => -1,
     ),
-    array(
+    /*array(
       'module' => 'search',
       'delta' => 'form',
       'theme' => $default_theme,
@@ -89,7 +89,7 @@ function riff_install() {
       'region' => 'sidebar_first',
       'pages' => '',
       'cache' => -1,
-    ),
+    ),*/
     array(
       'module' => 'node',
       'delta' => 'recent',
