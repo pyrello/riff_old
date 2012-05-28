@@ -100,7 +100,7 @@ function riff_install() {
       'pages' => '',
       'cache' => -1,
     ),
-    array(
+    /*array(
       'module' => 'user',
       'delta' => 'login',
       'theme' => $default_theme,
@@ -119,10 +119,10 @@ function riff_install() {
       'region' => 'sidebar_first',
       'pages' => '',
       'cache' => -1,
-    ),
+    ),*/
 		// Replace this with Riff-powered block
-    /*array(
-      'module' => 'system',
+    array(
+      'module' => 'riff_base',
       'delta' => 'powered-by',
       'theme' => $default_theme,
       'status' => 1,
@@ -130,7 +130,7 @@ function riff_install() {
       'region' => 'footer',
       'pages' => '',
       'cache' => -1,
-    ),*/
+    ),
     array(
       'module' => 'system',
       'delta' => 'help',
