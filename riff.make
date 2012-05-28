@@ -32,6 +32,11 @@ projects[riff_music_content][download][type] = "git"
 projects[riff_music_content][download][url] = "git://github.com/webgeeks/riff_music_content.git"
 projects[riff_music_content][download][branch] = "7.x-1.x"
 
+projects[pathauto_live_preview][type] = "module"
+projects[pathauto_live_preview][download][type] = "git"
+projects[pathauto_live_preview][download][url] = "http://git.drupal.org/sandbox/pyrello/1600922.git"
+projects[pathauto_live_preview][download][branch] = "7.x-1.x"
+
 ; Themes
 projects[] = "omega"
 
