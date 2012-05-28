@@ -79,6 +79,7 @@ function riff_install() {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),
     /*array(
       'module' => 'search',
@@ -89,6 +90,7 @@ function riff_install() {
       'region' => 'sidebar_first',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),*/
     array(
       'module' => 'node',
@@ -99,6 +101,7 @@ function riff_install() {
       'region' => 'dashboard_main',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),
     /*array(
       'module' => 'user',
@@ -109,17 +112,19 @@ function riff_install() {
       'region' => 'sidebar_first',
       'pages' => '',
       'cache' => -1,
-    ),
+			'title' => '',
+    ),*/
     array(
       'module' => 'system',
-      'delta' => 'navigation',
+      'delta' => 'main-menu',
       'theme' => $default_theme,
       'status' => 1,
       'weight' => 0,
-      'region' => 'sidebar_first',
+      'region' => 'menu',
       'pages' => '',
       'cache' => -1,
-    ),*/
+			'title' => "<none>",
+    ),
 		// Replace this with Riff-powered block
     array(
       'module' => 'riff_base',
@@ -130,6 +135,7 @@ function riff_install() {
       'region' => 'footer',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),
     array(
       'module' => 'system',
@@ -140,6 +146,7 @@ function riff_install() {
       'region' => 'help',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),
     array(
       'module' => 'system',
@@ -150,6 +157,7 @@ function riff_install() {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),
     array(
       'module' => 'system',
@@ -160,6 +168,7 @@ function riff_install() {
       'region' => 'help',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),
     array(
       'module' => 'user',
@@ -170,6 +179,7 @@ function riff_install() {
       'region' => 'content',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),
     array(
       'module' => 'user',
@@ -180,6 +190,7 @@ function riff_install() {
       'region' => 'dashboard_sidebar',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),
     array(
       'module' => 'search',
@@ -190,9 +201,10 @@ function riff_install() {
       'region' => 'dashboard_sidebar',
       'pages' => '',
       'cache' => -1,
+			'title' => '',
     ),
   );
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache', 'title'));
   foreach ($values as $record) {
     $query->values($record);
   }
@@ -475,7 +487,7 @@ function riff_install() {
 	//theme_disable(array('bartik'));
 	
 	// Import starter content
-	riff_create_content('full_html', 'content', 'content', 3);
+	riff_create_content();
 	
 	// Set values for pathauto
 	if (module_exists('pathauto')) {
@@ -495,21 +507,20 @@ function riff_install() {
  *
  * Adapted from http://scotthadfield.ca/2010/06/17/creating-nodes-drupal-install-profiles
  */
-function riff_create_content($format, $dir = 'content', $ext = 'content', $account = NULL) {  
-  $path = dirname(__FILE__);
-  $files = file_scan_directory($path . '/' . $dir, "\.${ext}$");
+function riff_create_content($dir = 'content', $ext = 'content') {  
+  $path = dirname(__FILE__) . '/' . $dir;
+  $files = file_scan_directory($path, "/\.${ext}$/");
   asort($files);
 
   foreach ($files as $file) {
-    $node = array();
     ob_start();
-    include $file->filename;
+    include $path . '/' . $file->filename;
     ob_end_clean();
-
-    $node = (object) $node;
-    $node->uid = $account ? $account->uid : 1;
-    $node->format = $format;
-    $node->field_body[0]['format'] = $format;
+		node_submit($node);
     node_save($node);
+		$node->link['link_path'] = 'node/' . $node->nid;
+		menu_link_save($node->link);
+		$node->path['source'] = 'node/' . $node->nid;
+		path_save($node->path);
   }
 }

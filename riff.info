@@ -34,6 +34,7 @@ dependencies[] = entity_token
 dependencies[] = features
 dependencies[] = jplayer
 dependencies[] = pathauto
+dependencies[] = pathauto_live_preview
 dependencies[] = rules
 dependencies[] = rules_admin
 dependencies[] = sweaver
