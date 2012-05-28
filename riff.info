@@ -41,6 +41,10 @@ dependencies[] = token
 dependencies[] = views
 dependencies[] = views_ui
 
+; Modules :: Riff
+dependencies[] = riff_base
+dependencies[] = riff_music_content
+
 ; Modules :: Contrib :: Commerce
 ;dependencies[] = commerce
 ;dependencies[] = commerce_ui
