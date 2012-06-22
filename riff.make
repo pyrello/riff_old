@@ -22,6 +22,11 @@ projects[] = "token"
 projects[] = "views"
 
 ; Modules :: Custom
+projects[blog_news][type] = "module"
+projects[blog_news][download][type] = "git"
+projects[blog_news][download][url] = "git://github.com/webgeeks/blog_news.git"
+projects[blog_news][download][branch] = "7.x-1.x"
+
 projects[riff_base][type] = "module"
 projects[riff_base][download][type] = "git"
 projects[riff_base][download][url] = "git://github.com/webgeeks/riff_base.git"
