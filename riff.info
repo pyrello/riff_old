@@ -29,6 +29,7 @@ dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_api
 dependencies[] = entity
+dependencies[] = entityreference
 dependencies[] = entity_token
 dependencies[] = features
 dependencies[] = jplayer
